@@ -18,10 +18,10 @@ This repository contains the source code for the ACS 2020 paper **Computational 
 
 <div class="row">
   <div class="column">
-    <img src="problems/SPMpadded/example_2x2.png" alt="The 2x2 Example Problem" style="width:100%"/>
+    <img src="problems/SPMpadded/example_2x2.png" alt="The 2x2 Example Problem" style="width:50%"/>
   </div>
   <div class="column">
-    <img src="problems/SPMpadded/example_3x3.png" alt="The 3x3 Example Problem" style="width:100%"/>
+    <img src="problems/SPMpadded/example_3x3.png" alt="The 3x3 Example Problem" style="width:50%"/>
   </div>
 </div>
 
