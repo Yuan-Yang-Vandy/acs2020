@@ -15,8 +15,8 @@ This repository contains the source code for the ACS 2020 paper **Computational 
 
 
 ## 3. Example Problems
-![The 2x2 Example Problem](https://github.com/Yuan-Yang-Vandy/acs2020/blob/master/problems/SPMpadded/example_2x2.png =800x)
-![The 3x3 Example Problem](https://github.com/Yuan-Yang-Vandy/acs2020/blob/master/problems/SPMpadded/example_3x3.png =800x)
+![The 2x2 Example Problem](https://github.com/Yuan-Yang-Vandy/acs2020/blob/master/problems/SPMpadded/example_2x2.png | width=500)
+![The 3x3 Example Problem](https://github.com/Yuan-Yang-Vandy/acs2020/blob/master/problems/SPMpadded/example_3x3.png | width=500)
 
 
 
