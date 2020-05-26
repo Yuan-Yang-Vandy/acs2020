@@ -21,3 +21,5 @@ This repository contains the source code for the ACS 2020 paper **Computational 
   <img src="problems/SPMpadded/example_3x3.png" alt="The 3x3 Example Problem" width="300"/>
 </p>
 
+We have two example problems in this repo, a 2x2 one and a 3x3 one. They are the same example problems we described in our paper. To protect the secrecy, we cannot provide the the genuine RPM problems we used in the experiments in our paper. But we leave the reports and detailed result of genuine standard RPM problems in folder `reports` and `data`.  You can run `main.py` to generate the same reports and detailed results for the example problems.
+
