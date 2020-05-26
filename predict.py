@@ -45,7 +45,7 @@ def predict_unary_default(prob, anlg, tran, d):
     for ii, opt in enumerate(prob.options):
         print(prob.name, anlg.get("name"), tran.get("name"), ii)
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -63,7 +63,7 @@ def predict_rearrange(prob, anlg, tran, d):
     for ii, opt in enumerate(prob.options):
         print(prob.name, anlg.get("name"), tran.get("name"), ii)
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -79,7 +79,7 @@ def predict_duplicate(prob, anlg, tran, d):
     for ii, opt in enumerate(prob.options):
         print(prob.name, anlg.get("name"), tran.get("name"), ii)
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -93,7 +93,7 @@ def predict_upscale_to(prob, anlg, tran, d):
         print(prob.name, anlg.get("name"), tran.get("name"), ii)
         prediction = transform.upscale_to(u3, opt)
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -119,7 +119,7 @@ def predict_xor_diff(prob, anlg, tran, d):
         diff = utils.erase_noise_point(np.logical_xor(u1_aligned, u2_aligned), 4)
         diff_score, _, _ = jaccard.jaccard_coef(diff, best_diff)
         score = (diff_score + u3_score + pred_score) / 3
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -153,7 +153,7 @@ def predict_subtract_diff(prob, anlg, tran, d):
         opt_score, _, _ = jaccard.jaccard_coef(prediction, opt)
 
         score = (diff_score + u3_score + opt_score) / 3
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -187,7 +187,7 @@ def predict_add_diff(prob, anlg, tran, d):
         opt_score, _, _ = jaccard.jaccard_coef(opt, prediction)
         score = (diff_score + opt_score + u3_score) / 3
 
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -219,7 +219,7 @@ def predict_inv_unite(prob, anlg, tran, d):
         opt_score, _, _, _, _, _ = asymmetric_jaccard.asymmetric_jaccard_coef(opt, b5)
         if max(b5_score, opt_score) > 0.85:
             score = 0
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": opt})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": opt})
 
     return pred_data
 
@@ -235,7 +235,8 @@ def predict_unite(prob, anlg, tran, d):
 
         prediction, _, _, _, _ = transform.apply_binary_transformation(b4, b5, tran, imgC = opt)
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
+
 
     return pred_data
 
@@ -275,7 +276,7 @@ def predict_preserving_subtract_diff(prob, anlg, tran, d):
         preserving_score = min(b4_b5_aj[0], b4_opt_aj[0])
 
         score = (diff_score + b5_score + diff_score + preserving_score) / 4
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -290,7 +291,7 @@ def predict_binary_default(prob, anlg, tran, d):
     pred_data = []
     for ii, opt in enumerate(prob.options):
         score, _, _ = jaccard.jaccard_coef(opt, prediction)
-        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "pato_score": (d.get("pat_score") + score) / 2, "pred": prediction})
+        pred_data.append({**d, "optn": ii + 1, "optn_score": score, "mato_score": (d.get("mat_score") + score) / 2, "pred": prediction})
 
     return pred_data
 
@@ -308,8 +309,8 @@ def predict_3x3(prob, anlg, tran, d):
         pred_d["anlg_type"] = anlg.get("type")
         pred_d["tran_type"] = tran.get("type")
         pred_d["prob_ansr"] = prob.answer
-        pred_d["pato_score"] = (d.get("pat_score") * (2 * d.get("sub_prob_n") - 1) + pred_d["pato_score"] * 2 - pred_d["pat_score"]) / (2 * d.get("sub_prob_n"))
-        pred_d["pat_score"] = d.get("pat_score")
+        pred_d["mato_score"] = (d.get("mat_score") * (2 * d.get("sub_prob_n") - 1) + pred_d["mato_score"] * 2 - pred_d["mat_score"]) / (2 * d.get("sub_prob_n"))
+        pred_d["mat_score"] = d.get("mat_score")
         pred_d["anlg_grp"] = anlg.get("group")
         pred_d["tran_grp"] = tran.get("group")
 

@@ -196,7 +196,7 @@ def run_prob_anlg_tran_3x3(prob, anlg, tran):
         else:
             last_sub_prob_anlg_tran_d = sub_prob_anlg_tran_d
 
-    pato_score_sum = utils.sum_score(sub_prob_pred_data, "pato_score")[0]
+    mato_score_sum = utils.sum_score(sub_prob_pred_data, "mato_score")[0]
 
     anlg_tran_d = {}
     anlg_tran_d["last_sub_prob_anlg_tran_d"] = copy.deepcopy(last_sub_prob_anlg_tran_d)
@@ -209,7 +209,7 @@ def run_prob_anlg_tran_3x3(prob, anlg, tran):
     anlg_tran_d["prob_type"] = prob.type
     anlg_tran_d["anlg_type"] = anlg.get("type")
     anlg_tran_d["tran_type"] = tran.get("type")
-    anlg_tran_d["pat_score"] = (last_sub_prob_anlg_tran_d["pat_score"] + pato_score_sum * 2) / (sub_prob_n * 2 - 1)
+    anlg_tran_d["mat_score"] = (last_sub_prob_anlg_tran_d["mat_score"] + mato_score_sum * 2) / (sub_prob_n * 2 - 1)
     anlg_tran_d["prob_ansr"] = prob.answer
     anlg_tran_d["anlg_grp"] = anlg.get("group")
     anlg_tran_d["tran_grp"] = tran.get("group")
@@ -217,7 +217,7 @@ def run_prob_anlg_tran_3x3(prob, anlg, tran):
     return anlg_tran_d
 
 
-def assemble_prob_anlg_tran_d(prob, anlg, tran, pat_score,
+def assemble_prob_anlg_tran_d(prob, anlg, tran, mat_score,
                               diff_to_u1_x = None,
                               diff_to_u1_y = None,
                               diff_to_u2_x = None,
@@ -239,7 +239,7 @@ def assemble_prob_anlg_tran_d(prob, anlg, tran, pat_score,
         "prob_name": prob.name,
         "anlg_name": anlg.get("name"),
         "tran_name": tran.get("name"),
-        "pat_score": pat_score,
+        "mat_score": mat_score,  # mat = mtrx + anlg + tran
         "prob_ansr": prob.answer,
         "prob_type": prob.type,
         "anlg_type": anlg.get("type"),
@@ -264,3 +264,7 @@ def assemble_prob_anlg_tran_d(prob, anlg, tran, pat_score,
         "diff_to_b2_x": diff_to_b2_x,
         "diff_to_b2_y": diff_to_b2_y
     }
+
+
+
+

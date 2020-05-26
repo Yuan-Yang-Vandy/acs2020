@@ -4,7 +4,7 @@ from predict import predict
 import utils
 
 
-def confident(prob):
+def confident(prob, explanation_score_name = "pat_score", prediction_score_name = "pato_score"):
 
     anlg_tran_data = []
     pred_data = []
@@ -18,19 +18,19 @@ def confident(prob):
         anlg_tran_data.append(digest(prob, anlg, tran))
 
     # get the best explanation over all pairs of anlg and tran
-    anlg_tran_d = utils.find_best(anlg_tran_data, "pat_score")
+    anlg_tran_d = utils.find_best(anlg_tran_data, explanation_score_name)
     anlg_tran_data = [anlg_tran_d]
 
     # get the prediction of the best explanation
     pred_data = predict(prob, anlg_tran_d)
 
     # find the best prediction
-    pred_d = utils.find_best(pred_data, "pato_score")
+    pred_d = utils.find_best(pred_data, prediction_score_name)
 
     return anlg_tran_data, pred_data, pred_d
 
 
-def neutral(prob):
+def neutral(prob, explanation_score_name = "pat_score", prediction_score_name = "pato_score"):
 
     anlg_tran_data = []
     pred_data = []
@@ -51,19 +51,19 @@ def neutral(prob):
             tran_data.append(digest(prob, anlg, tran))
 
         # find the best explanation of this anlg over all trans
-        anlg_tran_data.append(utils.find_best(tran_data, "pat_score"))
+        anlg_tran_data.append(utils.find_best(tran_data, explanation_score_name))
 
     # predict with the best explanation of each anlg
     for anlg_tran_d in anlg_tran_data:
         pred_data.extend(predict(prob, anlg_tran_d))
 
     # get the best prediction
-    pred_d = utils.find_best(pred_data, "pato_score")
+    pred_d = utils.find_best(pred_data, prediction_score_name)
 
     return anlg_tran_data, pred_data, pred_d
 
 
-def prudent(prob):
+def prudent(prob, explanation_score_name = "mat_score", prediction_score_name = "mato_score"):
 
     anlg_tran_data = []
     pred_data = []
@@ -81,7 +81,7 @@ def prudent(prob):
         pred_data.extend(predict(prob, anlg_tran_d))
 
     # get the best prediction
-    pred_d = utils.find_best(pred_data, "pato_score")
+    pred_d = utils.find_best(pred_data, prediction_score_name)
 
     return anlg_tran_data, pred_data, pred_d
 

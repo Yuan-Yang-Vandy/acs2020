@@ -8,13 +8,14 @@ translations = {
     "prob_name": "Problem",
     "prob_ansr": "Truth",
     "optn": "Prediction",
-    "pato_score": "Prediction Score",
     "prob_type": "Problem Type",
     "anlg_name": "Analogy",
     "anlg_type": "Analogy Type",
     "tran_name": "Transformation",
     "tran_type": "Transformation Type",
-    "pat_score": "Explanation Score",
+    "mat_score": "MAT Score",
+    "optn_score": "O Score",
+    "mato_score": "MATO Score",
     "anlg_n": "# of Hits",
     "tran_n": "# of Hits",
     "crct_probs": "Correctly Answered",
@@ -22,18 +23,18 @@ translations = {
     "crct/incr": "Correct v.s. Incorrect"
 }
 
-sltn_cols = ["prob_name", "prob_type", "prob_ansr", "optn", "pato_score",
-             "anlg_name", "anlg_type", "tran_name", "tran_type", "pat_score"]
+sltn_cols = ["prob_name", "prob_type", "prob_ansr", "optn",
+             "anlg_name", "anlg_type", "tran_name", "tran_type", "mat_score", "optn_score", "mato_score"]
 sltn_hdrs = [translations.get(col) for col in sltn_cols]
-sltn_col_widths = [15, 15, 15, 15, 15, 40, 15, 15, 15, 15]
+sltn_col_widths = [15, 15, 15, 15, 40, 15, 20, 15, 15, 15, 15]
 
 sltn_anlg_cols = ["anlg_name", "anlg_type", "anlg_n", "crct_probs", "incr_probs", "crct/incr"]
 sltn_anlg_hdrs = [translations.get(col) for col in sltn_anlg_cols]
-sltn_anlg_col_widths = [15, 15, 15, 30, 30, 15]
+sltn_anlg_col_widths = [40, 15, 15, 40, 15, 15]
 
 sltn_tran_cols = ["tran_name", "tran_type", "tran_n", "crct_probs", "incr_probs", "crct/incr"]
 sltn_tran_hdrs = [translations.get(col) for col in sltn_tran_cols]
-sltn_tran_col_widths = [15, 15, 15, 30, 30, 15]
+sltn_tran_col_widths = [25, 15, 15, 70, 20, 15]
 
 
 def create_report(probs, prefix):

@@ -1,8 +1,22 @@
 import run_raven
 import strategy
 
-run_raven.run_raven(strategy.confident)
+# M-confident strategy
+run_raven.run_raven(strategy.confident, prediction_score_name = "mato_score")
 
-run_raven.run_raven(strategy.neutral)
+# M-neutral strategy
+run_raven.run_raven(strategy.neutral, prediction_score_name = "mato_score")
 
-run_raven.run_raven(strategy.prudent)
+# M-prudent strategy
+run_raven.run_raven(strategy.prudent, prediction_score_name = "mato_score")
+
+# O-confident strategy
+run_raven.run_raven(strategy.confident, prediction_score_name = "optn_score")
+
+# O-neutral strategy
+run_raven.run_raven(strategy.neutral,  prediction_score_name = "optn_score")
+
+# O-prudent strategy
+run_raven.run_raven(strategy.prudent,  prediction_score_name = "optn_score")
+
+
